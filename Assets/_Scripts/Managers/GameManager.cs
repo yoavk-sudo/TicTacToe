@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     }
 
     [ContextMenu("Change Turn")]
-    private void ChangeTurn()
+    public void ChangeTurn()
     {
         _isXTurn = !_isXTurn;
         ChangeTurnSymbol();
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         {
             //if won
             IncreaseScore();
-            TogglePauseGame(); //not good enough, as it will set selected buttons as interatable
+            TogglePauseGame(); //not good enough, as it will set selected buttons as interactable
             return;
         }
         //if not won
