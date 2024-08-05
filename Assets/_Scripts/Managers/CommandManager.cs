@@ -27,7 +27,8 @@ public class CommandManager : MonoBehaviour
     public void Undo()
     {
         if (_commands == null || _commands.Count == 0 || _indexOfCurrentCommand < 0) return;
-        _commands[_indexOfCurrentCommand].GetButton.interactable = !_commands[_indexOfCurrentCommand].GetButton.interactable;
+        //_commands[_indexOfCurrentCommand].GetButton.interactable = !_commands[_indexOfCurrentCommand].GetButton.interactable;
+        _commands[_indexOfCurrentCommand].Unexecute();
         _indexOfCurrentCommand--;
         GameManager.Instance.ChangeTurn();
     }
