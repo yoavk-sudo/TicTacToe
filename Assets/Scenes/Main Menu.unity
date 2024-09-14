@@ -2322,6 +2322,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 479329720}
+    - target: {fileID: 3087395656628717910, guid: 245e5ba69abfd3a44867b4d7597d04ad, type: 3}
+      propertyPath: m_text
+      value: Tic Tac Toe
+      objectReference: {fileID: 0}
     - target: {fileID: 5059688987533239805, guid: 245e5ba69abfd3a44867b4d7597d04ad, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 20

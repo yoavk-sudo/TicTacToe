@@ -19,9 +19,8 @@ public class GameManager : MonoBehaviour
     private int[,] _gameMatrix;
     private int _gridSize;
 
-
-
     public static GameManager Instance { get; private set; }
+    public bool IsXTurn { get => _isXTurn; }
 
     private void OnValidate()
     {
@@ -67,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         _grid.SetGrid();
         _gameMatrix = new int[_gridSize, _gridSize];
+        CommandManager.Instance.ResetCommandList();
     }
 
     public void IsGameWon()
@@ -78,8 +78,26 @@ public class GameManager : MonoBehaviour
             TogglePauseGame(); //not good enough, as it will set selected buttons as interactable
             return;
         }
+        if(CheckForTie())
+        {
+            TogglePauseGame(); //not good enough, as it will set selected buttons as interactable
+            return;
+        }
         //if not won
         ChangeTurn();
+    }
+
+    private bool CheckForTie()
+    {
+        for (int i = 0; i < _gridSize; i++)
+        {
+            for (int j = 0; j < _gridSize; j++)
+            {
+                if (_gameMatrix[i, j] == 0) // check if there is a cell not occupied by a player
+                    return false;
+            }
+        }
+        return true;
     }
 
     private bool CheckWinnerDiagonal()
@@ -91,22 +109,13 @@ public class GameManager : MonoBehaviour
         //check from top left, to bottom right
         for (int i = 0; i < _gridSize; i++)
         {
-            switch (_gameMatrix[i,i])
-            {
-                case 0:
-                    break;
-                case 1:
-                    firstPlayerMarks++;
-                    break;
-                case 2:
-                    secondPlayerMarks++;
-                    break;
-                default:
-                    break;
-            }
+            CountPlayerMarks(i, ref firstPlayerMarks, ref secondPlayerMarks, i);
         }
         if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
+        {
+            Debug.Log("Won diagonal from top");
             return true;
+        }
 
         //check from bottom left, to top right
         firstPlayerMarks = 0;
@@ -114,23 +123,14 @@ public class GameManager : MonoBehaviour
         int j = _gridSize - 1;
         for (int i = 0; i < _gridSize; i++)
         {
-            switch (_gameMatrix[i, j])
-            {
-                case 0:
-                    break;
-                case 1:
-                    firstPlayerMarks++;
-                    break;
-                case 2:
-                    secondPlayerMarks++;
-                    break;
-                default:
-                    break;
-            }
+            CountPlayerMarks(i, ref firstPlayerMarks, ref secondPlayerMarks, j);
             j--;
         }
         if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
-            return true; 
+        {
+            Debug.Log("Won diagonal from bottom");
+            return true;
+        }
         return false;
     }
 
@@ -142,25 +142,17 @@ public class GameManager : MonoBehaviour
             int secondPlayerMarks = 0;
             for (int j = 0; j < _gridSize; j++)
             {
-                switch (_gameMatrix[j, i])
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        firstPlayerMarks++;
-                        break;
-                    case 2:
-                        secondPlayerMarks++;
-                        break;
-                    default:
-                        break;
-                }
-                if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
-                    return true;
+                CountPlayerMarks(j, ref firstPlayerMarks, ref secondPlayerMarks, i);
+            }
+            if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
+            {
+                Debug.Log("Won vertical, i: " + i);
+                return true;
             }
         }
         return false;
     }
+
 
     private bool CheckWinnerHorizontal()
     {
@@ -170,24 +162,32 @@ public class GameManager : MonoBehaviour
             int secondPlayerMarks = 0;
             for (int j = 0; j < _gridSize; j++)
             {
-                switch (_gameMatrix[i, j])
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        firstPlayerMarks++;
-                        break;
-                    case 2:
-                        secondPlayerMarks++;
-                        break;
-                    default:
-                        break;
-                }
-                if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
-                    return true;
+                CountPlayerMarks(i, ref firstPlayerMarks, ref secondPlayerMarks, j);
+            }
+            if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
+            {
+                Debug.Log("Won horizontal, i: " + i);
+                return true;
             }
         }
         return false;
+    }
+
+    private void CountPlayerMarks(int i, ref int firstPlayerMarks, ref int secondPlayerMarks, int j)
+    {
+        switch (_gameMatrix[i, j])
+        {
+            case 0:
+                break;
+            case 1:
+                firstPlayerMarks++;
+                break;
+            case 2:
+                secondPlayerMarks++;
+                break;
+            default:
+                break;
+        }
     }
 
     public void IncreaseScore()

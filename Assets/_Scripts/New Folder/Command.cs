@@ -9,7 +9,6 @@ public class Command : MonoBehaviour
     {
         GetButton.interactable = !GetButton.interactable;
         //change sprite
-
     }
 
     public void Execute()
