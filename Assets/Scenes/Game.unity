@@ -1841,6 +1841,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 133152971}
     m_Modifications:
+    - target: {fileID: 658547131614311164, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658547131614311164, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658547131614311164, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658547131614311164, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658547131614311164, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658547131614311164, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2187877965187450101, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
@@ -1941,6 +1965,54 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 368341416}
+    - target: {fileID: 7179590719244841601, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179590719244841601, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179590719244841601, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179590719244841601, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179590719244841601, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179590719244841601, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992437717093623366, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992437717093623366, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992437717093623366, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992437717093623366, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992437717093623366, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992437717093623366, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8792620680084201591, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
       propertyPath: m_Name
       value: Buttons
@@ -1950,11 +2022,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
---- !u!1 &3690030615299615453 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8792620680084201591, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
+--- !u!114 &3690030615299615454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8847367507295989203, guid: 71bf4474988bed54483d0a94df4dee96, type: 3}
   m_PrefabInstance: {fileID: 3690030615299615452}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ee8d2eb9c8da94c92379b02aa29282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4397226464529507891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1972,33 +2050,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1231208540}
     - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
-      propertyPath: _buttons
-      value: 
-      objectReference: {fileID: 3690030615299615453}
-    - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
-      propertyPath: _oSymbol
-      value: 
-      objectReference: {fileID: 1845870276}
-    - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
-      propertyPath: _xSymbol
-      value: 
-      objectReference: {fileID: 1800595174}
-    - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
-      propertyPath: _settings
-      value: 
-      objectReference: {fileID: 5129940915928833370, guid: 8081bb28c42bfac4f9e9e8c1bbbf5761, type: 3}
-    - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
       propertyPath: _pauseMenu
       value: 
       objectReference: {fileID: 1125346708}
     - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
-      propertyPath: _oScoreText
+      propertyPath: _playersUI
       value: 
-      objectReference: {fileID: 658086593}
+      objectReference: {fileID: 880082486}
     - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
-      propertyPath: _xScoreText
+      propertyPath: _barButtons
       value: 
-      objectReference: {fileID: 933760422}
+      objectReference: {fileID: 3690030615299615454}
     - target: {fileID: 8427771687745523425, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

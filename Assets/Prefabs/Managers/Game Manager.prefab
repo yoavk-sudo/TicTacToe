@@ -45,10 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf3eb33c7fde7b4f885a5a67d1f5353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xScoreText: {fileID: 0}
-  _oScoreText: {fileID: 0}
   _grid: {fileID: 0}
-  _buttons: {fileID: 0}
+  _playersUI: {fileID: 0}
+  _barButtons: {fileID: 0}
   _pauseMenu: {fileID: 0}
 --- !u!114 &4153705762797723953
 MonoBehaviour:

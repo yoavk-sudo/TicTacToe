@@ -21,10 +21,6 @@ public class CommandManager : MonoBehaviour
             return;
         }
         Instance = this;
-    }
-
-    private void Start()
-    {
         _commands = new();
     }
 
