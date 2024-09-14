@@ -56,6 +56,7 @@ public class GameButtonsHandler : MonoBehaviour
         foreach (var cell in _cells)
         {
             ChangeButtonImageToDefault(cell);
+            cell.interactable = true;
         }
     }
 
