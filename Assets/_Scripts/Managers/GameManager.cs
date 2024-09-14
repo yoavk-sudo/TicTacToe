@@ -1,17 +1,12 @@
-using UnityEngine;
 using TMPro;
-using System;
-using UnityEngine.UI;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameButtonsHandler _grid;
-    [SerializeField] TMP_Text _xScoreText;
-    [SerializeField] TMP_Text _oScoreText;
-    [SerializeField] GameObject _buttons;
+    [SerializeField] PlayersUI _playersUI;
+    [SerializeField] BarButtons _barButtons;
     [SerializeField] GameObject _pauseMenu;
-    [SerializeField] GameObject _xSymbol;
-    [SerializeField] GameObject _oSymbol;
 
     private int _xScore;
     private int _oScore;
@@ -21,17 +16,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
     public bool IsXTurn { get => _isXTurn; }
+    public GameObject PauseMenu { get => _pauseMenu; }
 
-    private void OnValidate()
-    {
-        try
-        {
-            _buttons = GameObject.Find("Buttons");
-        }
-        catch (System.Exception)
-        {
-        }
-    }
 
     private void Awake()
     {
@@ -45,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeTurnSymbol();
+        _playersUI.ChangeMarkAccordingToPlayerTurn();
         _gridSize = CurrentSettings.Instance.CurrentGridSize;
         SetUpGame();
     }
@@ -54,12 +40,7 @@ public class GameManager : MonoBehaviour
     public void ChangeTurn()
     {
         _isXTurn = !_isXTurn;
-        ChangeTurnSymbol();
-    }
-    private void ChangeTurnSymbol()
-    {
-        _xSymbol.SetActive(_isXTurn);
-        _oSymbol.SetActive(!_isXTurn);
+        _playersUI.ChangeMarkAccordingToPlayerTurn();
     }
 
     public void SetUpGame()
@@ -195,19 +176,19 @@ public class GameManager : MonoBehaviour
         if (_isXTurn)
         {
             _xScore += 1;
-            _xScoreText.text = _xScore.ToString();
+            _playersUI.IncreasePlayerScore(0, _xScore);
         }
         else
         {
             _oScore += 1;
-            _oScoreText.text = _oScore.ToString();
+            _playersUI.IncreasePlayerScore(1, _oScore);
         }
     }
 
     public void TogglePauseGame()
     {
         _grid.ToggleButtonsInteractability();
-        _buttons.SetActive(!_buttons.activeSelf);
+        _barButtons.ToggleButtonsInteractability();
         _pauseMenu.SetActive(!_pauseMenu.activeSelf);
     }
 
