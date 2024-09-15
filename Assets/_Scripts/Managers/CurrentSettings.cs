@@ -22,7 +22,25 @@ public class CurrentSettings : MonoBehaviour
 
     public void SetCurrentGridSize()
     {
-        if (_gridSizeUI == null) return;
-        _currentGridSize = _gridSizeUI.GridSize;
+        if (TryToGetGridSize())
+        {
+            _currentGridSize = _gridSizeUI.GridSize;
+        }
+    }
+    public bool TryToGetGridSize()
+    {
+        if (_gridSizeUI == null)
+        {
+            try
+            {
+                _gridSizeUI = GameObject.Find("Settings").GetComponent<SetGridSizeUI>();
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+        return true;
     }
 }

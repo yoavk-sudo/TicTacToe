@@ -440,6 +440,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 341847737110620251, guid: 5477de152ddaedc48ad392430dd80e2b, type: 3}
   m_PrefabInstance: {fileID: 7109183913723570384}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1125346710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125346708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20a08507f0fb2f49b29b5e5d18195a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resumeButton: {fileID: 7109183913723570385}
 --- !u!114 &1216026309 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8164315348916307200, guid: c8e683322f20ba748aba245e76529eab, type: 3}
@@ -2050,6 +2063,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1231208540}
     - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
+      propertyPath: _gameMenu
+      value: 
+      objectReference: {fileID: 1125346710}
+    - target: {fileID: 7077110244339571953, guid: e61db65ef17daea49b6d92042d85f2c9, type: 3}
       propertyPath: _pauseMenu
       value: 
       objectReference: {fileID: 1125346708}
@@ -2526,8 +2543,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 128531745914736040, guid: 5477de152ddaedc48ad392430dd80e2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1125346710}
   m_SourcePrefab: {fileID: 100100000, guid: 5477de152ddaedc48ad392430dd80e2b, type: 3}
+--- !u!1 &7109183913723570385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3348772693611890884, guid: 5477de152ddaedc48ad392430dd80e2b, type: 3}
+  m_PrefabInstance: {fileID: 7109183913723570384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

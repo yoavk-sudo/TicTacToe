@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameButtonsHandler _grid;
     [SerializeField] PlayersUI _playersUI;
     [SerializeField] BarButtons _barButtons;
-    [SerializeField] GameObject _pauseMenu;
+    [SerializeField] GameMenu _gameMenu;
 
     private int _xScore;
     private int _oScore;
@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
     public bool IsXTurn { get => _isXTurn; }
-    public GameObject PauseMenu { get => _pauseMenu; }
-
 
     private void Awake()
     {
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
         _grid.SetGrid();
         _gameMatrix = new int[_gridSize, _gridSize];
         CommandManager.Instance.ResetCommandList();
+        _gameMenu.RevealResumeButton();
     }
 
     public void IsGameWon()
@@ -56,12 +55,14 @@ public class GameManager : MonoBehaviour
         {
             //if won
             IncreaseScore();
-            TogglePauseGame(); //not good enough, as it will set selected buttons as interactable
+            TogglePauseGame();
+            _gameMenu.HideResumeButton();
             return;
         }
         if(CheckForTie())
         {
-            TogglePauseGame(); //not good enough, as it will set selected buttons as interactable
+            TogglePauseGame();
+            _gameMenu.HideResumeButton();
             return;
         }
         //if not won
@@ -189,7 +190,7 @@ public class GameManager : MonoBehaviour
     {
         _grid.ToggleButtonsInteractability();
         _barButtons.ToggleButtonsInteractability();
-        _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+        _gameMenu.ToggleGameMenu();
     }
 
     public void ChangeMark(int index)

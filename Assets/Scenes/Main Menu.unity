@@ -1246,17 +1246,6 @@ MonoBehaviour:
   _minGridSize: 3
   _rowSizeText: {fileID: 1020764998}
   _colSizeText: {fileID: 1881400347}
---- !u!114 &1218121524 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5129940915928833370, guid: 8081bb28c42bfac4f9e9e8c1bbbf5761, type: 3}
-  m_PrefabInstance: {fileID: 2068131761983591947}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c244d078314b354e8243960060d5845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1229824092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,9 +1610,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1218121524}
-        m_TargetAssemblyTypeName: CurrentSettings, Assembly-CSharp
-        m_MethodName: SetCurrentGridSize
+      - m_Target: {fileID: 1198822802}
+        m_TargetAssemblyTypeName: SetGridSizeUI, Assembly-CSharp
+        m_MethodName: GetGridSize
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

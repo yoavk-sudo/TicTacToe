@@ -58,4 +58,9 @@ public class SetGridSizeUI : MonoBehaviour
             UpdateUI();
         }
     }
+
+    public void GetGridSize()
+    {
+        CurrentSettings.Instance.SetCurrentGridSize();
+    }
 }
