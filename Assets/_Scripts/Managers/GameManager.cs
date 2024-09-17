@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     private bool _isXTurn = true;
     private int[,] _gameMatrix;
     private int _gridSize;
+    private bool _isSubscribedToCommandManagerOnEnable;
 
     public static GameManager Instance { get; private set; }
     public bool IsXTurn { get => _isXTurn; }
@@ -27,8 +29,31 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        if (CommandManager.Instance == null)
+        {
+            _isSubscribedToCommandManagerOnEnable = false;
+            return;
+        }
+        CommandManager.Instance.OnUndo += RemovePlayerFromCell;
+        CommandManager.Instance.OnRedo += AddPlayerToCell;
+        _isSubscribedToCommandManagerOnEnable = true;
+    }
+
+    private void OnDisable()
+    {
+        CommandManager.Instance.OnUndo -= RemovePlayerFromCell;
+        CommandManager.Instance.OnRedo -= AddPlayerToCell;
+    }
+
     private void Start()
     {
+        if (!_isSubscribedToCommandManagerOnEnable && CommandManager.Instance != null)
+        {
+            CommandManager.Instance.OnUndo += RemovePlayerFromCell;
+            CommandManager.Instance.OnRedo += AddPlayerToCell;
+        }
         _playersUI.ChangeMarkAccordingToPlayerTurn();
         _gridSize = CurrentSettings.Instance.CurrentGridSize;
         SetUpGame();
@@ -95,7 +120,6 @@ public class GameManager : MonoBehaviour
         }
         if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
         {
-            Debug.Log("Won diagonal from top");
             return true;
         }
 
@@ -128,7 +152,6 @@ public class GameManager : MonoBehaviour
             }
             if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
             {
-                Debug.Log("Won vertical, i: " + i);
                 return true;
             }
         }
@@ -148,7 +171,6 @@ public class GameManager : MonoBehaviour
             }
             if (firstPlayerMarks == _gridSize || secondPlayerMarks == _gridSize)
             {
-                Debug.Log("Won horizontal, i: " + i);
                 return true;
             }
         }
@@ -201,5 +223,24 @@ public class GameManager : MonoBehaviour
             _gameMatrix[row, col] = 1;
         else
             _gameMatrix[row, col] = 2;
+    }
+
+    private void RemovePlayerFromCell(Button cell)
+    {
+        int index =_grid.Cells.IndexOf(cell);
+        int row = index / _gridSize;
+        int col = index % _gridSize;
+        _gameMatrix[row, col] = 0;
+    }
+
+    private void AddPlayerToCell(Button cell)
+    {
+        int index = _grid.Cells.IndexOf(cell);
+        int row = index / _gridSize;
+        int col = index % _gridSize;
+        if (_isXTurn)
+            _gameMatrix[row, col] = 2;
+        else
+            _gameMatrix[row, col] = 1;
     }
 }
