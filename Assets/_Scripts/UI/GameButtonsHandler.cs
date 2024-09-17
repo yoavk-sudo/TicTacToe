@@ -16,9 +16,11 @@ public class GameButtonsHandler : MonoBehaviour
 
     private bool _isSubscribedToCommandManagerOnEnable = false;
 
+    public List<Button> Cells { get => _cells; private set => _cells = value; }
+
     private void OnValidate()
     {
-        _cells = GetComponentsInChildren<Button>().ToList();
+        Cells = GetComponentsInChildren<Button>().ToList();
         _grid = GetComponent<GridLayoutGroup>();
     }
 
@@ -53,7 +55,7 @@ public class GameButtonsHandler : MonoBehaviour
     {
         SetGridConstraintCount();
         FillGridWithButtons();
-        foreach (var cell in _cells)
+        foreach (var cell in Cells)
         {
             ChangeButtonImageToDefault(cell);
             cell.interactable = true;
@@ -68,23 +70,23 @@ public class GameButtonsHandler : MonoBehaviour
     private void FillGridWithButtons()
     {
         int totalButtonCount = (int)Mathf.Pow(_grid.constraintCount, 2);
-        while (_cells.Count > totalButtonCount)
+        while (Cells.Count > totalButtonCount)
         {
-            Button buttonToRemove = _cells[_cells.Count - 1];
-            _cells.RemoveAt(_cells.Count - 1);
+            Button buttonToRemove = Cells[Cells.Count - 1];
+            Cells.RemoveAt(Cells.Count - 1);
             Destroy(buttonToRemove.gameObject);
         }
-        while (_cells.Count < totalButtonCount)
+        while (Cells.Count < totalButtonCount)
         {
             Button newButton = Instantiate(_gridButton, _grid.transform);
             newButton.interactable = true;
-            _cells.Add(newButton);
+            Cells.Add(newButton);
         }
     }
 
     public void ToggleButtonsInteractability()
     {
-        foreach (var button in _cells)
+        foreach (var button in Cells)
         {
             button.interactable = !button.interactable;
         }
@@ -92,7 +94,7 @@ public class GameButtonsHandler : MonoBehaviour
 
     public void GetButton(Button cell)
     {
-        int index = _cells.IndexOf(cell);
+        int index = Cells.IndexOf(cell);
         ChangeButtonImageToPlayerMark(cell);
         CommandManager.Instance.ExecuteCommand(cell, index);
     }
